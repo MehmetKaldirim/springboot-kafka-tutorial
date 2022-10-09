@@ -34,7 +34,7 @@ public class JsonKafkaProducer {
         // MessageBuilder<T> org.springframework.messaging.support
         Message<User> message = MessageBuilder
                 .withPayload(data)
-                .setHeader(KafkaHeaders.TOPIC, "javaguides")
+                .setHeader(KafkaHeaders.TOPIC, "javaguides_json")
                 .build();
 
         kafkaTemplate.send(message);
