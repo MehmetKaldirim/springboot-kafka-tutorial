@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class JsonKafkaProducer {
 
-    //@Value("${spring.kafka.topic-json.name}")
-    //private String topicJsonName;
+    @Value("${spring.kafka.topic-json.name}")
+    private String topicJsonName;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonKafkaProducer.class);
 
@@ -34,7 +34,7 @@ public class JsonKafkaProducer {
         // MessageBuilder<T> org.springframework.messaging.support
         Message<User> message = MessageBuilder
                 .withPayload(data)
-                .setHeader(KafkaHeaders.TOPIC, "javaguides_json")
+                .setHeader(KafkaHeaders.TOPIC, topicJsonName)
                 .build();
 
         kafkaTemplate.send(message);
